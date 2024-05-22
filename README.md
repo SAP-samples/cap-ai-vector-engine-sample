@@ -1,33 +1,83 @@
-# SAP-samples/repository-template
-This default template for SAP Samples repositories includes files for README, LICENSE, and .reuse/dep5. All repositories on github.com/SAP-samples will be created based on this template.
-
-# Containing Files
-
-1. The LICENSE file:
-In most cases, the license for SAP sample projects is `Apache 2.0`.
-
-2. The .reuse/dep5 file: 
-The [Reuse Tool](https://reuse.software/) must be used for your samples project. You can find the .reuse/dep5 in the project initial. Please replace the parts inside the single angle quotation marks < > by the specific information for your repository.
-
-3. The README.md file (this file):
-Please edit this file as it is the primary description file for your project. You can find some placeholder titles for sections below.
-
-# [Title]
-<!-- Please include descriptive title -->
+# CAP with SAP HANA Vector Engine & SAP Core AI
 
 <!--- Register repository https://api.reuse.software/register, then add REUSE badge:
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
 -->
 
 ## Description
-<!-- Please include SEO-friendly description -->
+This repository contains a code sample on how to build Cloud Application Programming Model applications exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine via an OData API. The code also shows how a developer can leverage vector embeddings to train a LLM on business specific content.
+
+For more information about the end-to-end scenario, take a look at the [architecture documentation](/doumentation/architecture.md).
 
 ## Requirements
+* A suitable IDE like Visual Studio Code or Neovim
+* Install the [Cloud Foundry CLI](https://developers.sap.com/tutorials/cp-cf-download-cli.html)
+* Install the [hana-cli](https://github.com/SAP-samples/hana-developer-cli-tool-example) (optional)
+* Create an [SAP BTP account](https://help.sap.com/docs/btp/sap-business-technology-platform/trial-accounts-and-free-tier)
+* Create an instance of [SAP HANA Cloud](https://developers.sap.com/tutorials/hana-cloud-deploying.html).
+* Create an instance of [SAP AI Core](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-service-instance)
+* Create [deployments](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core) for model support ChatCompletion `gpt-35-turbo or gpt-4` and embedding model `text-embedding-ada-002`
+* Create a [destination](https://help.sap.com/docs/btp/sap-business-technology-platform/create-destination) for Generative AI Hub in the SAP BTP Cockpit of your subaccount based on the Service Key of SAP AI core:
+```
+Name: GENERATIVE_AI_HUB
+Description: SAP AI Core deployed service (generative AI hub)
+URL: <AI-API-OF-AI-CORE-SERVICE-KEY>/v2 # make sure to add /v2!
+Type: HTTP
+ProxyType: Internet
+Authentication: OAuth2ClientCredentials
+tokenServiceURL: <TOKEN-SERVICE-URL-OF-AI-CORE-SERVICE-KEY>/oauth/token
+clientId: <YOUR-CLIENT-ID-OF-AI-CORE-SERVICE-KEY>
+clientSecret: <YOUR-CLIENT-SECRET-OF-AI-CORE-SERVICE-KEY>
+# Additional Properties:
+URL.headers.AI-Resource-Group: default # adjust if necessary
+URL.headers.Content-Type: application/json
+HTML5.DynamicDestination: true
+```
+* The SAP BTP account needs the following entitlements:
+
+| Name              | Service/Application | Plan |
+| :---------------- | :------ | :---- |
+| AI Core        |   `aicore`   | `trial` |
+| AI Launchpad           |   `ai-launchpad`   | `standard` |
+| HANA Cloud    |  `hana-cloud`   | `hana` |
 
 ## Download and Installation
+1. Clone this GitHub repository to your local machine and open it in VS Code or any other suitable editor.
+2. Run `npm install` in the root to install all dependencies
+3. Connect to your subaccount:  
+`cf login -a <subaccount-endpoint>`
+4. Bind the following services to the application:  
+    - SAP Hana Cloud  
+    `cds bind --to <hana-service-instance>:default  `
+    - SAP BTP, Destination Service  
+    `cds bind --to <destination>  `
+5. Build the database artifacts for the SAP HANA Cloud deployment:  
+`cds build --for hana`
+6. Deploy database artifacts to SAP HANA Cloud:  
+`cds deploy --to hana:<hana-service-instance>`
+7. For [hybrid testing](https://cap.cloud.sap/docs/advanced/hybrid-testing):  
+`cds watch --profile hybrid`
+
+## How to use the application
+To properly run through the use case there are four API endpoints you can call. There is a flow of calls you should execute to successfully retrieve the correct RAG response from the AI partner models.
+
+There are two services defined in this CAP application:
+
+* The **Embedding Storage**; includes the input text chunking, creation of vector embeddings, storing and deletion of the vector embeddings in the SAP HANA Cloud vector engine.
+* The **Roadshow Service**; includes calls for retrieving the RAG response and execution of a similarity search.
+
+A detailed list of the available API calls can be found in the [API Documentation](documentation/api-documentation.md).
+
+## Further Information
+* [CAP LLM Plugin samples](https://github.com/SAP-samples/cap-llm-plugin-samples/)
+* [CAP LLM Plugin npm](https://www.npmjs.com/package/cap-llm-plugin)
+* [CAP Vector Embeddings](https://cap.cloud.sap/docs/guides/databases-hana#vector-embeddings)
+* [Retrieval Augmented Generation with GenAI on SAP BTP](https://discovery-center.cloud.sap/refArchDetail/ref-arch-open-ai)
+* [What is SAP AI Core?](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/what-is-sap-ai-core)
+* [Combine the Power of AI with Business Context Using SAP HANA Cloud Vector Engine](https://news.sap.com/2024/04/sap-hana-cloud-vector-engine-ai-with-business-context/)
 
 ## Known Issues
-<!-- You may simply state "No known issues. -->
+No known issues.
 
 ## How to obtain support
 [Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
