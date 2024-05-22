@@ -5,7 +5,7 @@
 -->
 
 ## Description
-This repository contains a code sample on how to build Cloud Application Programming Model applications exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine via an OData API. The code also shows how a developer can leverage vector embeddings to train a LLM on business specific content.
+This repository contains a code sample on how to build a Cloud Application Programming Model application exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine using the CAP LLM Plugin. The code also shows how a developer can leverage vector embeddings to train an LLM on your very own business context.
 
 For more information about the end-to-end scenario, take a look at the [architecture documentation](/doumentation/architecture.md).
 
@@ -17,7 +17,7 @@ For more information about the end-to-end scenario, take a look at the [architec
 * Create an instance of [SAP HANA Cloud](https://developers.sap.com/tutorials/hana-cloud-deploying.html).
 * Create an instance of [SAP AI Core](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-service-instance)
 * Create [deployments](https://help.sap.com/docs/sap-ai-core/sap-ai-core-service-guide/create-deployment-for-generative-ai-model-in-sap-ai-core) for model support ChatCompletion `gpt-35-turbo or gpt-4` and embedding model `text-embedding-ada-002`
-* Create a [destination](https://help.sap.com/docs/btp/sap-business-technology-platform/create-destination) for Generative AI Hub in the SAP BTP Cockpit of your subaccount based on the Service Key of SAP AI core:
+* Create a [destination](https://help.sap.com/docs/btp/sap-business-technology-platform/create-destination) for Generative AI Hub in the SAP BTP Cockpit of your subaccount based on the Service Key of SAP AI Core:
 ```
 Name: GENERATIVE_AI_HUB
 Description: SAP AI Core deployed service (generative AI hub)
@@ -44,7 +44,7 @@ HTML5.DynamicDestination: true
 ## Download and Installation
 1. Clone this GitHub repository to your local machine and open it in VS Code or any other suitable editor.
 2. Run `npm install` in the root to install all dependencies
-3. Connect to your subaccount:  
+3. Connect to your SAP BTP subaccount:  
 `cf login -a <subaccount-endpoint>`
 4. Bind the following services to the application:  
     - SAP Hana Cloud  
@@ -55,18 +55,16 @@ HTML5.DynamicDestination: true
 `cds build --for hana`
 6. Deploy database artifacts to SAP HANA Cloud:  
 `cds deploy --to hana:<hana-service-instance>`
-7. For [hybrid testing](https://cap.cloud.sap/docs/advanced/hybrid-testing):  
+7. For [hybrid testing](https://cap.cloud.sap/docs/advanced/hybrid-testing) execute:  
 `cds watch --profile hybrid`
 
 ## How to use the application
-To properly run through the use case there are four API endpoints you can call. There is a flow of calls you should execute to successfully retrieve the correct RAG response from the AI partner models.
+To properly run through the use case there are four API endpoints you can call which can be found in the [API Documentation](documentation/api-documentation.md).
 
 There are two services defined in this CAP application:
 
 * The **Embedding Storage**; includes the input text chunking, creation of vector embeddings, storing and deletion of the vector embeddings in the SAP HANA Cloud vector engine.
 * The **Roadshow Service**; includes calls for retrieving the RAG response and execution of a similarity search.
-
-A detailed list of the available API calls can be found in the [API Documentation](documentation/api-documentation.md).
 
 ## Further Information
 * [CAP LLM Plugin samples](https://github.com/SAP-samples/cap-llm-plugin-samples/)
