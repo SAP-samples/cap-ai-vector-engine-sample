@@ -37,7 +37,7 @@ HTML5.DynamicDestination: true
 
 | Name              | Service/Application | Plan |
 | :---------------- | :------ | :---- |
-| AI Core        |   `aicore`   | `trial` |
+| AI Core        |   `aicore`   | `extended` |
 | AI Launchpad           |   `ai-launchpad`   | `standard` |
 | HANA Cloud    |  `hana-cloud`   | `hana` |
 
