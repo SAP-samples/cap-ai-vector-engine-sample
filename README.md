@@ -65,6 +65,7 @@ There are two services defined in this CAP application:
 * The **Roadshow Service**; includes calls for retrieving the RAG response and execution of a similarity search.
 
 ## Further Information
+* [Generative AI Hub TechBytes sample](https://github.com/SAP-samples/sap-tech-bytes/tree/2024-29-01-generative-ai-hub)
 * [CAP LLM Plugin samples](https://github.com/SAP-samples/cap-llm-plugin-samples/)
 * [CAP LLM Plugin npm](https://www.npmjs.com/package/cap-llm-plugin)
 * [CAP Vector Embeddings](https://cap.cloud.sap/docs/guides/databases-hana#vector-embeddings)
