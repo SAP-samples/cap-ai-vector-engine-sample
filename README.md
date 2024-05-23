@@ -1,8 +1,6 @@
 # CAP with SAP HANA Vector Engine & SAP Core AI
 
-<!--- Register repository https://api.reuse.software/register, then add REUSE badge:
-[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/REPO-NAME)](https://api.reuse.software/info/github.com/SAP-samples/REPO-NAME)
--->
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cap-ai-vector-engine-sample)](https://api.reuse.software/info/github.com/SAP-samples/cap-ai-vector-engine-sample)
 
 ## Description
 This repository contains a code sample on how to build a Cloud Application Programming Model application exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine using the CAP LLM Plugin. The code also shows how a developer can leverage vector embeddings to train an LLM on your very own business context.
