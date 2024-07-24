@@ -1,9 +1,6 @@
 namespace sap.advocates.demo;
 
-using {
-    cuid,
-    managed
-} from '@sap/cds/common';
+using { managed } from '@sap/cds/common';
 
 entity DocumentChunk: managed {
     text_chunk: LargeString;
