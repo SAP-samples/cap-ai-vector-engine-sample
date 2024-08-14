@@ -38,6 +38,7 @@ HTML5.DynamicDestination: true
 | AI Core        |   `aicore`   | `extended` |
 | AI Launchpad           |   `ai-launchpad`   | `standard` |
 | HANA Cloud    |  `hana-cloud`   | `hana` |
+| SAP HANA Schemas & HDI Containers    |  `hdi-shared`   | `free` |
 
 ## Download and Installation
 1. Clone this GitHub repository to your local machine and open it in VS Code or any other suitable editor.
@@ -45,10 +46,10 @@ HTML5.DynamicDestination: true
 3. Connect to your SAP BTP subaccount:  
 `cf login -a <subaccount-endpoint>`
 4. Bind the following services to the application:  
-    - SAP Hana Cloud  
-    `cds bind --to <hana-service-instance>:default  `
+    - SAP HDI instance, hdi-shared
+    `cds bind --to <hdi-shared-instance>:<service-key-name>`
     - SAP BTP, Destination Service  
-    `cds bind --to <destination>  `
+    `cds bind --to <destination>`
 5. Build the database artifacts for the SAP HANA Cloud deployment:  
 `cds build --for hana`
 6. Deploy database artifacts to SAP HANA Cloud:  
