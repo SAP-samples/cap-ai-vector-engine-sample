@@ -53,7 +53,7 @@ HTML5.DynamicDestination: true
 5. Build the database artifacts for the SAP HANA Cloud deployment:  
 `cds build --for hana`
 6. Deploy database artifacts to SAP HANA Cloud:  
-`cds deploy --to hana:<hana-service-instance>`
+`cds deploy --to hana:<hdi-shared-service-instance>`
 7. For [hybrid testing](https://cap.cloud.sap/docs/advanced/hybrid-testing) execute:  
 `cds watch --profile hybrid`
 
