@@ -24,12 +24,7 @@
     "requires": {
       "db": {
         "kind": "hana"
-      },
-      "auth": "dummy",
-      "destinations": true
-    },
-    "hana": {
-      "deploy-format": "hdbtable"
+      }
     }
   }
 }
