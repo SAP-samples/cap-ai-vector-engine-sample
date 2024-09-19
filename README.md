@@ -3,9 +3,11 @@
 [![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/cap-ai-vector-engine-sample)](https://api.reuse.software/info/github.com/SAP-samples/cap-ai-vector-engine-sample)
 
 ## Description
-This repository contains a code sample on how to build a Cloud Application Programming Model application exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine using the CAP LLM Plugin. The code also shows how a developer can leverage vector embeddings to train an LLM on your very own business context.
+This repository contains a code sample on how to build a Cloud Application Programming Model application exposing functionality of SAP AI Core and SAP HANA Cloud Vector Engine using the CAP LLM Plugin. The code also shows how a developer can leverage vector embeddings to provide contextual information to an LLM.
 
-For more information about the end-to-end scenario, take a look at the [architecture documentation](/doumentation/architecture.md).
+For more information about the end-to-end scenario, take a look at the [architecture documentation](/documentation/architecture.md).
+
+If you want an instructional experience learning about the CAP LLM Plugin, SAP AI Core and SAP Generative AI Hub follow the [Expose capabilities of SAP AI Core with the SAP Cloud Application Programming Model CodeJam](https://github.com/SAP-samples/codejam-cap-llm/tree/main).
 
 ## Requirements
 * A suitable IDE like Visual Studio Code or Neovim
