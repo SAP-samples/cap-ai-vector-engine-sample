@@ -1,4 +1,4 @@
-#THIS PROJECT IS BEING ARCHIVED. IF YOU WANT TO LEARN MORE ABOUT HOW TO USE THE HANA VECTOR ENGINE HEAD OVER TO: https://github.com/SAP-samples/codejam-cap-llm/tree/main
+# THIS PROJECT IS BEING ARCHIVED. IF YOU WANT TO LEARN MORE ABOUT HOW TO USE THE HANA VECTOR ENGINE HEAD OVER TO: https://github.com/SAP-samples/codejam-cap-llm/tree/main
 
 # CAP with SAP HANA Vector Engine & SAP Core AI
 
